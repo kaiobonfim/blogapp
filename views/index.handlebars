@@ -1,0 +1,29 @@
+<div class="bg-light p-5 rounded-lg m-3">
+  <h1 class="display-4">Welcome to the BlogApp!</h1>
+  <p class="lead">This is app was developed with nodejs using express, mongoose, handlebars and passport.</p>
+  <hr class="my-4">
+  <p>Developed by <a href="https://www.linkedin.com/in/kaio-raimundo/">Kaio Raimundo</a> with the guidance of <a href="https://www.youtube.com/c/GuiadoProgramador/videos" target="_blank">Victor Lima</a></p>
+  {{#if user}}
+  {{else}}
+  <a class="btn btn-primary btn-lg" href="/users/register" role="button">Create Account</a>
+  {{/if}}
+</div>
+
+<hr>
+
+<h2>Post feed</h2>
+
+{{#each posts}}
+    <div class="card mt-2 mb-2">
+        <div class="card-body">
+            <h3>{{title}}</h3>
+            <p>{{description}}</p>
+            <a href="/post/{{slug}}"><button class="btn btn-success">Read more</button></a>
+            <hr>
+            <small>Category: {{category.name}}</small><br>
+            <small>Creation date: {{date}}</small>
+        </div>
+    </div>
+{{else}}
+    <h3 class="mt-3">No posts found</h3>
+{{/each}}
